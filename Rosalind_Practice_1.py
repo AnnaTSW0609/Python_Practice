@@ -8,15 +8,14 @@ C_count = 0
 G_count = 0
 
 for letter in DNA:
-  if letter == A:
+  if letter == "A":
     A_count+=1
-  elif letter == T:
+  elif letter == "T":
     T_count+=1
-  elif letter == C:
+  elif letter == "C":
     C_count += 1
   else:
     G_count += 1
  
 
-Print(A_count, C_count, G_count, T_count)
-  
+print(A_count, C_count, G_count, T_count)
