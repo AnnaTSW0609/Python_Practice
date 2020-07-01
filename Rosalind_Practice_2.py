@@ -1,9 +1,9 @@
 # Transcription 
 
-Def Transcription_Function(path):
-  
-  with open("path") as f:
+# the DNA string
+
+f = "GATGGAACTTGACTACGTAAATT"
+
+f.replace("T", "U")
     
-    f.replace("T", "U")
-    
-    print(f)
+print(f)
