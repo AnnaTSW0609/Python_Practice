@@ -4,6 +4,4 @@
 
 f = "GATGGAACTTGACTACGTAAATT"
 
-f.replace("T", "U")
-    
-print(f)
+print(f.replace("T", "U"))
