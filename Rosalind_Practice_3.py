@@ -1,3 +1,5 @@
+"""Creating Reverse Complimentary string for any given string"""
+
 DNA_string = "AAAACCCGGT"
 
 complimentary = ""
