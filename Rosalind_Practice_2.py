@@ -1,6 +1,6 @@
 # Transcription 
 
-# the DNA string
+"""Transcription of any DNA string, i.e. replacing "T" with "U""""
 
 f = "GATGGAACTTGACTACGTAAATT"
 
