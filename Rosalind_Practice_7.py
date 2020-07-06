@@ -16,11 +16,11 @@ with open("/Users/annatswater/Desktop/new_rosalind_gc.txt","r+") as f:
 
     for line in f: # save names and sequences separately 
 
-        line = line.rstrip()
+        line = line.rstrip() # remove \n
 
         if ">" in line:
 
-            line = line.replace(">","")
+            line = line.replace(">","") # answer format required 
             
             name.append(line)
 
@@ -39,12 +39,13 @@ with open("/Users/annatswater/Desktop/new_rosalind_gc.txt","r+") as f:
             seq.append(GC_count)
     
 
-    max_item = max(seq)
+    max_item = max(seq) # the largest GC% in the list 
 
     print(name[seq.index(max_item)])
 
     print("{:.6f}".format(max_item*100)) # you must get the % or else it wouldn't be right! times 100! 
-    
+ 
+# Reference: https://www.researchgate.net/post/How_can_I_join_the_wrap_lines_in_a_huge_FASTA_file and https://www.biostars.org/p/9262/
 
             
 
