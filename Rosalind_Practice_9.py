@@ -4,7 +4,7 @@
 
 mol_weight = {} # empty dictionary 
 
-with open ("/Users/annatswater/Desktop/Monoisotopic_Table.txt", "r+") as f:
+with open ("/Users/annatswater/Desktop/Monoisotopic_Table.txt", "r+") as f: # this is a txt I copied from the question prompt, format: A 71.03711 etc.
 
     for line in f:
 
