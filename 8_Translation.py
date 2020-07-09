@@ -1,3 +1,5 @@
+"""Translation of any nucleotide string"""
+
 # Generate codon table as a python dictionary 
 # from http://www.petercollingridge.co.uk/tutorials/bioinformatics/codon-table/ with annotation and modification 
 
