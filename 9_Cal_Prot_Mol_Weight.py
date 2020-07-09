@@ -1,4 +1,4 @@
-"""Calculating Protein Mass"""
+"""Calculating Protein Molecular Weight"""
 
 # Create Monoisotopic Table from file 
 
