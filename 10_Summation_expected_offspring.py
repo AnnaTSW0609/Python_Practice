@@ -19,7 +19,7 @@ ans = 2*total * ((number[0] + number [1] + number [2])/total + (number[3]*3)/(4*
 print(ans)
 
 
-# try summation 
+# try summation, not necessarily useful for this question 
 
 def summation(n):
 
