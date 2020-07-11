@@ -1,5 +1,7 @@
 """Return consensus sequence"""
 
+# Execution time very long (2+ minutes for 1kb sequences, look for suggestions and improvements
+
 import numpy as np 
 
 with open ("/Users/annatswater/Desktop/seq_file.txt", "r+") as f:
@@ -73,7 +75,9 @@ with open ("/Users/annatswater/Desktop/seq_file.txt", "r+") as f:
     Seq_count.append(G)
     Seq_count.append(T)
 
-    Seq_count = np.array(Seq_count)
+    Seq_count = np.array(Seq_count) # put the ATGC count for each position into the same list then the same array for comparison
+    
+    # horizontal = list, each item = count in each position, vertical = ATCG
 
     for i in range(len(Seq_count[0])):
 
@@ -81,9 +85,9 @@ with open ("/Users/annatswater/Desktop/seq_file.txt", "r+") as f:
 
         for char in Seq_count[:,i]:
 
-            ATCG_max.append(char)
+            ATCG_max.append(char) # adding all the count number to a list, because technically they belong to different lists (horizontal) and we want vertical
 
-        if max(ATCG_max) == ATCG_max[0]:
+        if max(ATCG_max) == ATCG_max[0]: # they are in that order
 
             consensus += "A"
 
@@ -98,7 +102,8 @@ with open ("/Users/annatswater/Desktop/seq_file.txt", "r+") as f:
         elif max(ATCG_max) == ATCG_max[3]:
 
             consensus += "T"
-
+            
+    # print the answer in the asked format
     print(consensus)
     print("A: ",*A)
     print("C: ",*C)
