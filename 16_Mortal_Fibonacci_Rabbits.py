@@ -6,12 +6,13 @@
 """Each pair is male and female"""
 """Calculate how many rabbits are there after n months"""
 """ Fn = Fn-2 + Fn-1 - F(n-(m-1))"""
+""" Because rabbits born F(n-(m-1)) month ago will die in Fn (Fn = F(n-(m-1)) + m) month"""
 
 # Fibonacci Series using Dynamic Programming
 # Inspiration from https://www.geeksforgeeks.org/program-for-nth-fibonacci-number/
 # with help from https://chrispresso.coffee/2019/02/28/rosalind-mortal-fibonacci-rabbits/
 
-def fibonacci(n, k):
+def fibonacci(n, m):
 
     # Setting the first two fibonacci numbers as 1 and 1 in list L
 
@@ -33,10 +34,10 @@ def fibonacci(n, k):
 
         else:
 
-            item = L[len(L)-1] + L[len(L)-2] * k
+            item = L[len(L)-1] + L[len(L)-2] - L[len(L)-(m-1)]
 
             L.append(item)
 
-    return(L[len(L)-1])
+    return (L[len(L)-1])
         
-print(fibonacci(32, 2))  
+print(fibonacci(6, 3))  
