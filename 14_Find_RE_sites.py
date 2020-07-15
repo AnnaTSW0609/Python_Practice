@@ -21,7 +21,7 @@ for i in range(len(DNA)): # the i here is already index, so can directly print
         
         # if len(Substring) >= 4:
         
-        # Originally I have the above line to shuffle out those at the end of the DNA string, turns out it is the wrong way
+        # Originally I have the above line to shuffle out those substring at the end of the DNA string, turns out it is the wrong way
         
         Substring = DNA[i:i+j]
 
