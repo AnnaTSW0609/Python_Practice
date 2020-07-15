@@ -2,6 +2,8 @@
 
 DNA = "TTTAAATTTAAA"
 
+DNA = input() # use input to avoid cut and paste problem
+
 import re 
 
 def ReverseComplement(string): # need to consider reverse complementary string and its ORF as well
@@ -13,43 +15,47 @@ def ReverseComplement(string): # need to consider reverse complementary string a
 
 RE_list = []
 
-for i in range(len(DNA)):
+for i in range(len(DNA)): # the i here is already index, so can directly print
 
-    for j in range(i+4, i+13): # index issue: if len = 12, i+13
+    for j in range(4, 13): # index issue: if len = 12, i+13
 
-        Substring = DNA[i:j]
+        Substring = DNA[i:i+j]
 
-        if len(Substring) >= 4:
-            
-            rev_Substring = ReverseComplement(Substring)
-            
-            if rev_Substring == Substring:
-              
-              RE_list.append(Substring)
-              RE_list = list(dict.fromkeys(RE_list))
+        rev_Substring = ReverseComplement(Substring)
 
-        else:
-            pass
+        if rev_Substring == Substring and i+j<=len(DNA): # can directly print index
+
+        # i+j <= DNA = limit on length, or it wouldn't make sense that the substring extend beyond the string
         
-print(RE_list)
+            print(i+1, j) # i = starting position, j = ending, i.e. length
+              
+              # RE_list.append(Substring)
+              # RE_list = list(dict.fromkeys(RE_list))
 
-RE_index_list = [] # this list stores all the lists (some with one item) for the position matches
+        # else:
+            # pass
+        
+# print(RE_list)
 
-for i in RE_list:
-    Iter_index = [m.start() for m in re.finditer(i, DNA)] # this would return lists of position, one list for each of the RE substrings
-    RE_index_list.append(Iter_index)
+# RE_index_list = [] # this list stores all the lists (some with one item) for the position matches
+
+# for i in RE_list:
+    # Iter_index = [m.start() for m in re.finditer(i, DNA)] # this would return lists of position, one list for each of the RE substrings
+    # RE_index_list.append(Iter_index)
 # So, the index of the item in RE_index_list will match the index of the items in RE_list
 # i.e. each palindrome in RE_list matches the positions in RE_index_list
 
-print(RE_index_list)
+# print(RE_index_list)
             
-for i,j in zip(RE_list, RE_index_list):
+#for i,j in zip(RE_list, RE_index_list):
 
-    if RE_list.index(i) == RE_index_list.index(j): # i.e. each palindrome corresponds to position of each list in the index list
+    # if RE_list.index(i) == RE_index_list.index(j): # i.e. each palindrome corresponds to position of each list in the index list
 
-        for item in j: # return all matching positions in the list for each palindrome
+        # for item in j: # return all matching positions in the list for each palindrome
 
-            print(item+1, len(i)) # +1 to match 1-based position
+            # print(item+1, len(i)) # +1 to match 1-based position
+            
+
             
         
         
