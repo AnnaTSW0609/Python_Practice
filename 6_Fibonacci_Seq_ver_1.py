@@ -4,7 +4,7 @@
 """Then, they give birth to k pair(s) of rabbits each month"""
 """Each pair is male and female"""
 """Calculate how many rabbits are there after n months"""
-""" Fn = 2*Fn-2 + Fn-1"""
+""" Fn = k*Fn-2 + Fn-1"""
 
 # Fibonacci Series using Dynamic Programming
 # Inspiration from https://www.geeksforgeeks.org/program-for-nth-fibonacci-number/
