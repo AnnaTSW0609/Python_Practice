@@ -34,5 +34,5 @@ def Mendel_2nd_Law(N, K):
     Cumulative_Prob += comb(T, i) * (0.25**i) * (0.75**(T-i)) # P(success)^no. of successes needed * P(failure)^no.of failure, return one possible combination, * binomial coefficient to get all possible combinations
   
   return(Cumulative_Prob)
-  
-print(Mendel_2nd_Law(1,2))
+   
+print("{:.3f}".format(Mendel_2nd_Law(1,2))) # remember to add the format
