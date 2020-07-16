@@ -16,10 +16,10 @@
 
 
 
-def Mendel_2nd_Law(N, K):
+def Mendel_2nd_Law(K, N):
   
-  # let total offspring in the kth generation be T, where T = k**2 (each offspring in the kth generation has two offspring)
-  T = K**2
+  # let total offspring in the kth generation be T, where T = 2**k (each offspring in the kth generation has two offspring)
+  T = 2**K
   
   P_AaBb = 0.25 # probability that an offspring will be AaBb in any generation that crosses with AaBb = 1/4
   
@@ -34,5 +34,6 @@ def Mendel_2nd_Law(N, K):
     Cumulative_Prob += comb(T, i) * (0.25**i) * (0.75**(T-i)) # P(success)^no. of successes needed * P(failure)^no.of failure, return one possible combination, * binomial coefficient to get all possible combinations
   
   return(Cumulative_Prob)
-   
-print("{:.3f}".format(Mendel_2nd_Law(1,2))) # remember to add the format
+  
+ans = Mendel_2nd_Law(5, 9)
+print(ans) # remember to add the format
