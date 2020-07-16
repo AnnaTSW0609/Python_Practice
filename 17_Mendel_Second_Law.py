@@ -26,9 +26,15 @@ def Mendel_2nd_Law(N, K):
   from math import comb # import function for combination 
   
   Binomial_Coefficient = comb(T, N) # T Choose N, choose N scenarios from a total of T scenario, Combination = (n!)/(r!(n-r)!)
-
-  return Binomial_Coefficient * (0.25**N) * (0.75**(T-N)) # P(success)^no. of successes needed * P(failure)^no.of failure, return one possible combination, * binomial coefficient to get all possible combinations
-
+  
+  Cumulative_Prob = 0 # initialize for adding probability
+  
+  for i in range(N, T+1): # because at least N, so need to consider N+1, N+2, N+3...T, T+1 for python index issue
+    
+    Cumulative_Prob += Binomial_Coefficient * (0.25**i) * (0.75**(T-i)) # P(success)^no. of successes needed * P(failure)^no.of failure, return one possible combination, * binomial coefficient to get all possible combinations
+  
+  return(Cumulative_Prob)
+  
 print(Mendel_2nd_Law(1,2))
 
 
