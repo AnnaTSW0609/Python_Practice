@@ -1,0 +1,5 @@
+"""Mendel Second Law Application"""
+"""Start with one AaBb individual"""
+"""Each generation would only mate with AaBb"""
+"""Each generation would have 2 offsprings"""
+"""Given the above, find N (min. number of AaBb organisms) after kth generation"""
