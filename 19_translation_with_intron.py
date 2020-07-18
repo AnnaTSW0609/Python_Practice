@@ -39,8 +39,9 @@ with open("/Users/annatswater/Desktop/rosalind_splc_1.txt", "r+") as f:
       else:
           lst_seq.append(line)
       
-  sequence = lst_seq[0]
-  lst_seq.pop(0)
+  sequence = lst_seq[0] # the first item is by default the original string
+  # sequence = max(lst_seq, key=len) # if want to find the max item length, when the position of the longest string is not fixed 
+  lst_seq.pop(0) # remove it from the list to get a list of introns 
   
   
 for intron in lst_seq: # remove the introns from the DNA seq
