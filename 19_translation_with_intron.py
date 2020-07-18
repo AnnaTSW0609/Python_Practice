@@ -7,7 +7,25 @@ codons = [a + b + c for a in bases for b in bases for c in bases] # random formi
 amino_acids = 'FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG'# already in the right order 
 codon_table = dict(zip(codons, amino_acids))
 
-with open("/Users/annatswater/Desktop/rosalind_ini6.txt", "r+") as f:
+# then define translation algorithm 
+
+def translate (seq):
+    
+    peptide = ""
+    
+    for i in range(0, len(seq), 3): # range(start, stop, step) https://www.geeksforgeeks.org/python-range-function/
+        codon = seq [i: i+3] # +3 so that cover the third base, index issue
+        amino_acid = codon_table.get(codon, '*')
+
+        if amino_acid != '*': # use dictionary get method to obtain the amino acid, which is the value for the key (codon)
+            peptide += amino_acid
+            
+        else: # * =  stop codon, so if have * break
+            break
+
+    return (peptide)
+
+with open("/Users/annatswater/Desktop/rosalind_splc_1.txt", "r+") as f:
   
   lst_seq = []
   
@@ -21,15 +39,15 @@ with open("/Users/annatswater/Desktop/rosalind_ini6.txt", "r+") as f:
       else:
           lst_seq.append(line)
       
-  sequence = max(lst_seq) # save every line to the list, then remove the max lengthed item
-
-  lst_seq.pop(lst_seq.index(sequence)) # this list would be the introns
-
-
-  for intron in lst_seq: # remove the introns from the DNA seq
-
-      if sequence.find(intron) != -1:
-          sequence = sequence.replace(intron, "")
-
+  sequence = lst_seq[0]
+  lst_seq.pop(0)
   
+  
+for intron in lst_seq: # remove the introns from the DNA seq
 
+    if sequence.find(intron) != -1:
+
+        sequence = sequence.replace(intron, "")
+
+pep = translate (sequence)
+print(pep)
