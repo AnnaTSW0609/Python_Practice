@@ -1,5 +1,12 @@
 """Translation with intron"""
 
+# define the codon table for translation
+
+bases = "TCAG"
+codons = [a + b + c for a in bases for b in bases for c in bases] # random forming ttt, ttc,tta, ttg, to get the 64 codons
+amino_acids = 'FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG'# already in the right order 
+codon_table = dict(zip(codons, amino_acids))
+
 with open("/Users/annatswater/Desktop/rosalind_ini6.txt", "r+") as f:
   
   lst_seq = []
