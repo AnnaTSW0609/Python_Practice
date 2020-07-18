@@ -1,5 +1,7 @@
 """Finding position and length of panlindrome sequences (4-12bp) in given sequence"""
 
+# Major inspiration: https://github.com/jssssv007/stackexcahnge/blob/master/thebillionyearwar.py
+
 DNA = "TTTAAATTTAAA"
 
 DNA = input() # use input to avoid cut and paste problem
