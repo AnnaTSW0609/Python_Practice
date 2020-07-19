@@ -5,36 +5,43 @@
 """but transversions more common in coding region (ratio = 3) because it causes more drastic changes"""
 """Thus helpful when defining coding regions"""
 
+# to read the file that had \n for the same sequence 
+
 with open ("/Users/annatswater/Desktop/rosalind_subs.txt", "r+") as f:
   
   DNA_string = ""
   
   DNA_lst = []
 
-  final_lst = []
+
+
+
+# start counting 
+
+for x, y in zip(DNA_lst[0], DNA_lst[1]):
   
-  for line in f:
+  if x != y:
     
-    if ">" in line:
-      pass
-    
+    if x == "A" and y == "G":
+      
+      transition += 1
+      
+    elif  x == "G" and y == "A":
+      
+      transition += 1
+      
+    elif  x == "C" and y == "T":
+      
+      transition += 1
+      
+    elif  x == "T" and y == "C":
+      
+      transition += 1
+      
     else:
-
-        if len(DNA_lst) == 0:
-
-            DNA_lst.append(line)
-
-        elif len(DNA_lst) != 0 and len(line) < len(max(DNA_lst)):
-
-            for item in DNA_lst:
-
-                DNA_string += item
-
-            final_lst.append(DNA_string)
-            DNA_string = ""
-            
-  print(final_lst)
-          
-
-  
-          
+      
+      transversion += 1
+      
+print(transition/transversion)
+      
+    
