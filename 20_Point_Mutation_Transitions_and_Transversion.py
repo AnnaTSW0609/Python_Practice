@@ -5,11 +5,13 @@
 """but transversions more common in coding region (ratio = 3) because it causes more drastic changes"""
 """Thus helpful when defining coding regions"""
 
-with open (file, "r+") as f:
+with open ("/Users/annatswater/Desktop/rosalind_subs.txt", "r+") as f:
   
   DNA_string = ""
   
   DNA_lst = []
+
+  final_lst = []
   
   for line in f:
     
@@ -17,16 +19,22 @@ with open (file, "r+") as f:
       pass
     
     else:
-      
-      for char in line:
-        
-        DNA_string += char
-        
-        if char = " ":
+
+        if len(DNA_lst) == 0:
+
+            DNA_lst.append(line)
+
+        elif len(DNA_lst) != 0 and len(line) < len(max(DNA_lst)):
+
+            for item in DNA_lst:
+
+                DNA_string += item
+
+            final_lst.append(DNA_string)
+            DNA_string = ""
+            
+  print(final_lst)
           
-          DNA_lst.append(DNA_string)
-          DNA_string = ""
-          
-  print(DNA_lst)
+
   
           
