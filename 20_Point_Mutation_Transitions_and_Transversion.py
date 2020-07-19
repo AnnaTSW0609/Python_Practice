@@ -5,20 +5,20 @@
 """but transversions more common in coding region (ratio = 3) because it causes more drastic changes"""
 """Thus helpful when defining coding regions"""
 
-# to read the file that had \n for the same sequence 
 
-with open ("/Users/annatswater/Desktop/rosalind_subs.txt", "r+") as f:
-  
-  DNA_string = ""
-  
-  DNA_lst = []
+# input
 
+first_DNA = input("First DNA: ")
+
+second_DNA = input("Second DNA: ")
 
 
+transition = 0
+transversion = 0
 
 # start counting 
 
-for x, y in zip(DNA_lst[0], DNA_lst[1]):
+for x, y in zip(first_DNA, second_DNA):
   
   if x != y:
     
@@ -43,5 +43,3 @@ for x, y in zip(DNA_lst[0], DNA_lst[1]):
       transversion += 1
       
 print(transition/transversion)
-      
-    
