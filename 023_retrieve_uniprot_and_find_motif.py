@@ -3,6 +3,17 @@
 
 # obtain the list of ids from rosalind file 
 
+all_id = "" 
+
+with open("/Users/annatswater/Desktop/uniprot_test.py", "r+") as f:
+   
+   for line in f:
+      
+      line = line.replace("\n", "")
+      all_id += " "
+      all_id += line
+
+print(all_id)
 
 # standard database identifier mapping from
 # https://www.uniprot.org/help/api_idmapping
@@ -15,7 +26,7 @@ params = {
 'from': 'ACC+ID',
 'to': 'ENSEMBL_ID',
 'format': 'tab',
-'query': 'P40925 P40926 O43175 Q9UM73 P97793'
+'query': all_id
 }
 
 data = urllib.parse.urlencode(params)
