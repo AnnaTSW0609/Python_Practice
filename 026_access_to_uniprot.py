@@ -18,4 +18,5 @@ handle = ExPASy.get_sprot_raw('B5ZC00') #you can give several IDs separated by c
 record = SwissProt.read(handle) # use SwissProt.parse for multiple proteins
 
 for i in record.keywords: # this supposedly contain all info about the Biological Processes
+  print(i)
   
