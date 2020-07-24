@@ -5,6 +5,9 @@
 # 7 % 2 (7/2 = 3...1)
 # >>> 1
 
+# but then 1%6 = 1 because 1/6 = 6*0 +1 
+# so if x%y where y>x, x%y = x
+
 # Codon table
 
 bases = "UCAG"
