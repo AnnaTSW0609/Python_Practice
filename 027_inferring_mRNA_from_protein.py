@@ -1,11 +1,20 @@
 """Inferring all possible mRNA that can give rise to a protein"""
 """ ans = total number of possible mRNA mod 1,000,000; to avoid storage of large numbers"""
 
+# python modulo operator = %
+# 7 % 2 (7/2 = 3...1)
+# >>> 1
+
 # Codon table
 
 bases = "UCAG"
 codons = [a + b + c for a in bases for b in bases for c in bases] # random forming ttt, ttc,tta, ttg, to get the 64 codons
-amino_acids = 'FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG'# already in the right order 
+amino_acids = 'FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG'# already in the right order
+
+
+# actually you could just count the number of amino acids in the amino_acid variable to get all possibilities
+# sigh
+
 codon_table = dict(zip(codons, amino_acids))
 
 # for key, value in codon_table.items(): # item() yield key-value pairs
@@ -52,15 +61,8 @@ for aa in Prot:
 print(M)
     
 
-    
-        
+   
 
-        
-        
-        
 
-# python modulo operator = %
-# 7 % 2 (7/2 = 3...1)
-# >>> 1
 
 
