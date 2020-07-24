@@ -31,7 +31,7 @@ for key, value in new_codon_table.items():
   
   new_codon_table[key] = len(value)
     
-print(new_codon_table)
+
 
 Prot = input("Your protein: ")
 
@@ -44,6 +44,10 @@ for aa in Prot:
     aa_prob = int(new_codon_table.get(aa)) # get the total number of codons for an aa
     
     M = (M*aa_prob)%1000000
+
+    # this is because there is up to 6 different codons for an amino acid
+
+    # and 1/2/3/4/5/6 mod 1000000 = the same 
 
 print(M)
     
