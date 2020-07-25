@@ -1,4 +1,6 @@
-"""REST retrieval of sequences from uniprot using uniprot identifiers"""
+"""Retrieve protein sequences uniprot accession numbers using Biopython modules"""
+"""Then use Regex module to scan for pattern, e.g. N-glycosylation motif"""
+"""Then return the position of the motif"""
 
 
 # obtain the list of ids from rosalind file 
@@ -44,4 +46,14 @@ for item, accession in zip(records,all_id):
     
     ID_and_seq [accession] = item.sequence # reference: http://rosalind.info/problems/dbpr/
 
+# [XY] means "either X or Y" and {X} means "any amino acid except X." 
+# For example, the N-glycosylation motif is written as N{P}[ST]{P}.
+# so it's N-(not P)-(either S or T)-(not P)
 
+import re # import the re module for parsing 
+motif = r"N[^P](S|T)[^P]" # https://pythonforbiologists.com/regular-expressions
+
+for item in ID_and_seq:
+   pos = [] # collection of all positions
+   pos.append(re.search(motif, ID_and_seq[item]).start())
+   
