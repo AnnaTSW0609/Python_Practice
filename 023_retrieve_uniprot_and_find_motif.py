@@ -3,47 +3,45 @@
 
 # obtain the list of ids from rosalind file 
 
-all_id = "" 
+all_id = [] 
 
 with open("/Users/annatswater/Desktop/uniprot_test.py", "r+") as f:
    
    for line in f:
       
       line = line.replace("\n", "")
-      all_id += " "
-      all_id += line
+      
+      all_id.append(line)
 
-all_id = all_id.lstrip()
 
-print(all_id)
-
-# standard database identifier mapping from
-# https://www.uniprot.org/help/api_idmapping
-
+# to circumvent the SSL certificate error
 # https://stackoverflow.com/questions/35569042/ssl-certificate-verify-failed-with-python3
 import ssl
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
-import urllib.parse
-import urllib.request
+"""Using Biopython Module to access Uniprot using accession number""" # borrowed from exercise 26
 
-url = 'https://www.uniprot.org/uploadlists/'
+from Bio import ExPASy
 
-params = {
-'from': 'ACC+ID',
-'to': 'ENSEMBL_ID',
-'format': 'tab',
-'query': "A2Z669 B5ZC00 P07204_TRBM_HUMAN P20840_SAG1_YEAST"
-}
+from Bio import SwissProt
 
-data = urllib.parse.urlencode(params)
-data = data.encode('utf-8')
-req = urllib.request.Request(url, data)
-with urllib.request.urlopen(req) as f:
-   response = f.read()
-print(response.decode('utf-8'))
+# Reference: https://biopython.readthedocs.io/en/latest/chapter_uniprot.html#sec-expasy-swissprot
 
-# N-glycosylation motif is written as N{P}[ST]{P}.
-      
+records = []
+
+
+for accession in all_id: # obtain the raw uniprot data
+
+    handle = ExPASy.get_sprot_raw(accession)
+    record = SwissProt.read(handle)
+    records.append(record)
+
+ID_and_seq = {} # create a dictionary for storing the sequences under their accession number
+
+for item, accession in zip(records,all_id):
+    
+    ID_and_seq [accession] = item.sequence # reference: http://rosalind.info/problems/dbpr/
+
+
