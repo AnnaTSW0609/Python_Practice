@@ -17,16 +17,17 @@ def lexi_perm(char, num): # char =  list of characters
 
     # https://stackoverflow.com/questions/3099987/generating-permutations-with-repetitions
     
-    for i in list(product(char,repeat = num)): # permutations (list to permutate, length)
+    for i in product(char,repeat = num): # permutations (list to permutate, length)
+      
+      print ("".join(i)) 
+        # i = list(i) # returns tuple, so turn into list first
 
-        i = list(i) # returns tuple, so turn into list first
+        # output = ""
 
-        output = ""
+        # for x in i:
 
-        for x in i:
+            # output += x # required format: string
 
-            output += x # required format: string
-
-        print(output)
+        # print(output)
 
 lexi_perm(char_lst,number)
