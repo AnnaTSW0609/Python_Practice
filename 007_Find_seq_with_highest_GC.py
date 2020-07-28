@@ -1,52 +1,41 @@
-"""Reading sequences from fasta file and find the sequence with the highest GC%"""
+"""Given: DNA string s and an array of numbers, representing GC%"""
+"""Return: common log (base 10) of P(a random string with the GC-content found in A[k] will match s exactly.)"""
 
-# used "awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < rosalind_gc.txt > new_rosalind_gc.txt"
-
-# in Bash to solve the problem (cd Desktop first, and need to delete the first empty line)
-
-# because the fasta file is not in the same line 
-
-with open("/Users/annatswater/Desktop/new_rosalind_gc.txt","r+") as f:
-
-    # all_seq = {} # empty dictionary to store the sequences
-
-    name = []
-
-    seq = []
-
-    for line in f: # save names and sequences separately 
-
-        line = line.rstrip() # remove \n
-
-        if ">" in line:
-
-            line = line.replace(">","") # answer format required 
-            
-            name.append(line)
-
-        else:
-
-            count = 0
-
-            for char in line:
-
-                if char == "G" or char == "C":
-
-                    count += 1
-
-            GC_count = count/len(line)
-
-            seq.append(GC_count)
+# read the Given datafile 
+with open("/Users/annatswater/Desktop/rosalind_prob.txt", "r+") as f:
+  
+  for line in f:
     
+    if "A" not in line: # if DNA characters not in line
+      
+      Array = line.strip().split()
+      
+    else:
+      
+      DNA = line.strip()
 
-    max_item = max(seq) # the largest GC% in the list 
+# GC% can translate into DNA probability 
+# e.g. if 40% GC rate, then 20% chance for any nucleotide to be a G/C, and 30% for a A/T
+# so GC_rate/2 = G/C and (1-GC_rate)/2 = A/T
 
-    print(name[seq.index(max_item)])
+import math 
+ans = [] # empty list for storing 
 
-    print("{:.6f}".format(max_item*100)) # you must get the % or else it wouldn't be right! times 100! 
+for GC_rate in Array:
+
+  Prob = 1 # initializing
+
+  for base in DNA:
+  
+    if base == "A" or base == "T":
+    
+      Prob *= ((1-float(GC_rate))/2) 
+   
+    elif base == "G" or base == "C":
+      
+      Prob *= (float(GC_rate)/2) 
  
-# Reference: https://www.researchgate.net/post/How_can_I_join_the_wrap_lines_in_a_huge_FASTA_file and https://www.biostars.org/p/9262/
+  ans.append("{:.3f}".format(math.log10(Prob)))
 
-            
-
+print(*ans)  
     
