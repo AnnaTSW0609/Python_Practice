@@ -2,17 +2,17 @@
 """Return: common log (base 10) of P(a random string with the GC-content found in A[k] will match s exactly.)"""
 
 # read the Given datafile 
-with open(filename, "r+") as f:
+with open("/Users/annatswater/Desktop/rosalind_rand.txt", "r+") as f:
   
   for line in f:
     
-    if line.isdigit() == True:
+    if "A" not in line: # if DNA characters not in line
       
       Array = line.strip().split()
       
     else:
       
-      DNA = line
+      DNA = line.strip()
 
 # GC% can translate into DNA probability 
 # e.g. if 40% GC rate, then 20% chance for any nucleotide to be a G/C, and 30% for a A/T
@@ -27,18 +27,15 @@ for GC_rate in Array:
 
   for base in DNA:
   
-    if base == A or base == T:
+    if base == "A" or base == "T":
     
-      Prob *= ((1-GC_rate)/2)*0.5 # 1 in 2 chances for A/T
+      Prob *= ((1-float(GC_rate))/2) 
    
-    elif base == G or base == C:
+    elif base == "G" or base == "C":
       
-      Prob *= (GC_rate/2)*0.5 # 1 in 2 chances for G/C
+      Prob *= (float(GC_rate)/2) 
  
-  ans.append(math.log10(Prob))
+  ans.append("{:.3f}".format(math.log10(Prob)))
 
 print(*ans)  
     
-    
-  
-  
