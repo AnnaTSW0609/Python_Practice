@@ -20,7 +20,7 @@ def lexi_perm(char, num): # char =  list of characters
     
 four_mers = lexi_perm(["A", "C", "G", "T"], 4)
 
-with open("/Users/annatswater/Desktop/rosalind_kmer.txt", "r+") as file:
+with open("/Users/annatswater/Desktop/rosalind_kmer.txt", "r+") as file: # to deal with wrap fastas given by rosalind
 
   lst = []
 
@@ -40,7 +40,7 @@ import regex # to find overlapps and repeats
 
 for item in four_mers:
   
-  ans_array.append(len(list(regex.finditer(item, DNA, overlapped=1))))
+  ans_array.append(len(list(regex.finditer(item, DNA, overlapped=1)))) # you don't want position for items but occurance for each "found"
 
 with open("/Users/annatswater/Desktop/032_ans.txt", "w+") as f:
 
