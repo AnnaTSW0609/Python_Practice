@@ -1,19 +1,19 @@
 """Given an integer N, GC% x and a random DNA string s"""
 """Return probability if N random strings is constructed with GC% x, at least 1 = s"""
 
-with open(file, "r+") as f:
+with open("/Users/annatswater/Desktop/rosalind_rstr.txt", "r+") as f:
   
   for line in f:
     
     if line.isalpha() == True:
       
       s = line.strip()
-      
+
     else:
       
       lst = line.strip().split()
       
-      N = lst [0]
+      N = float(lst [0]) # float**float =  True
       
       x = lst [1]
 
@@ -35,4 +35,7 @@ for base in s:
       
       Prob *= (float(x)/2) 
 
-print(Prob)      
+# Compute 1- not P in N sequence, i.e. 1-P**N
+# Ref: https://www.youtube.com/watch?v=dwjQaJ5xt1o
+
+print("{:.3f}".format(1- (1-Prob)**N))
