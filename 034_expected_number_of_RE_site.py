@@ -30,15 +30,17 @@ for GC in A:
     
     if base == "G" or base == "C":
       
-      Prob *= ((1-float(GC))/2) 
+      Prob *= (float(GC)/2)
     
     elif base == "A" or base == "T":
       
-      Prob *= (float(GC)/2) 
+      Prob *=  ((1-float(GC))/2) 
       
-  B.append("{:.3f}".format(Prob*(N-len(s) +1))) # prob of substring matching GC% and s * number of all substring with len(s) in string len(N)
+  B.append(str(Prob*(N-len(s) +1))) # prob of substring matching GC% and s * number of all substring with len(s) in string len(N)
   
   # https://math.stackexchange.com/questions/141044/number-of-substrings-of-length-m-in-a-string-of-length-n
 
   # last possible starting point = len(string) - len(substring) +1 i.e. move back one position forward
-print(*B)
+
+
+print(" ".join(B))
