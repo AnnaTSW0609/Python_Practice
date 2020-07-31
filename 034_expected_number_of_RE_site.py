@@ -2,22 +2,24 @@
 """Return: Array B containing expected number of times that s will be a substring of t"""
 """t = strings length N and with GC% of A[i]"""
 
-with open("filename", "r+") as f:
+with open("/Users/annatswater/Desktop/rosalind_rstr.txt", "r+") as f:
   
   for line in f:
-    
-    if line.isdigit() == True:
+
+      line = line.strip()
+
+      if line.isdigit() == True:
+
+          N = float(line.strip())
+
+      elif line.isalpha() == True:
+
+          s = line.strip()
       
-      N = line.strip()
-      
-    elif line.isalpha() == True:
-      
-      s = line.strip()
-      
-    else:
-      
-      A = line.strip().split()
-      
+      else:
+
+          A = line.strip().split()
+
 B = [] # the answer array 
 
 for GC in A:
@@ -34,6 +36,9 @@ for GC in A:
       
       Prob *= (float(GC)/2) 
       
-  B.append(Prob*N) # expected number in a string length N
+  B.append("{:.3f}".format(Prob*(N-len(s) +1))) # prob of substring matching GC% and s * number of all substring with len(s) in string len(N)
+  
+  # https://math.stackexchange.com/questions/141044/number-of-substrings-of-length-m-in-a-string-of-length-n
 
-print(B)
+  # last possible starting point = len(string) - len(substring) +1 i.e. move back one position forward
+print(*B)
